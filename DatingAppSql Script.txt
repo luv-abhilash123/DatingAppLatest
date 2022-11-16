@@ -1,0 +1,169 @@
+USE [DatingApp]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 16-11-2022 21:16:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Photos]    Script Date: 16-11-2022 21:16:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Photos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Url] [nvarchar](max) NOT NULL,
+	[IsMain] [bit] NOT NULL,
+	[PublicId] [nvarchar](max) NULL,
+	[AppUserId] [int] NOT NULL,
+ CONSTRAINT [PK_Photos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 16-11-2022 21:16:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](max) NOT NULL,
+	[PasswordHash] [varbinary](max) NOT NULL,
+	[PasswordSalt] [varbinary](max) NOT NULL,
+	[City] [nvarchar](max) NOT NULL,
+	[Country] [nvarchar](max) NOT NULL,
+	[Created] [datetime2](7) NOT NULL,
+	[DateOfBirth] [datetime2](7) NOT NULL,
+	[Gender] [nvarchar](max) NOT NULL,
+	[Interests] [nvarchar](max) NOT NULL,
+	[Introduction] [nvarchar](max) NOT NULL,
+	[KnownAs] [nvarchar](max) NOT NULL,
+	[LastActive] [datetime2](7) NOT NULL,
+	[LookingFor] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221012161135_InitialCreate', N'6.0.10')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221016135846_userpasswordadded', N'6.0.10')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221107163702_ExtendedUserEntity', N'6.0.10')
+GO
+SET IDENTITY_INSERT [dbo].[Photos] ON 
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (1, N'https://randomuser.me/api/portraits/women/54.jpg', 1, NULL, 71)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (2, N'https://randomuser.me/api/portraits/women/50.jpg', 1, NULL, 72)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (3, N'https://randomuser.me/api/portraits/women/14.jpg', 1, NULL, 73)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (4, N'https://randomuser.me/api/portraits/women/11.jpg', 1, NULL, 74)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (5, N'https://randomuser.me/api/portraits/women/84.jpg', 1, NULL, 75)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (6, N'https://randomuser.me/api/portraits/men/90.jpg', 1, NULL, 76)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (7, N'https://randomuser.me/api/portraits/men/87.jpg', 1, NULL, 77)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (8, N'https://randomuser.me/api/portraits/men/57.jpg', 1, NULL, 78)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (9, N'https://randomuser.me/api/portraits/men/11.jpg', 1, NULL, 79)
+GO
+INSERT [dbo].[Photos] ([Id], [Url], [IsMain], [PublicId], [AppUserId]) VALUES (10, N'https://randomuser.me/api/portraits/men/93.jpg', 1, NULL, 80)
+GO
+SET IDENTITY_INSERT [dbo].[Photos] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (71, N'lisa', 0x3F7DC8F12ACA91B26140B281AC30F32EA848625C8BB670D212045C0B6806BE6FC65C4BA562A4E660C1AE356935B00A6A31DFDA89AB1D1C6C64CDCA69E5F20AA0, 0x3DBE19C095C6A5275763E141A5061C93149BDB925D47EE68F01F4504006ECFDB5E43A7C523FE1D9FA5F954547410F6BA9335F189315F417CD05816AF8BF79F8E81C657B3AF6FA9319125736E161E3956C2B2B37FD5BBBBA692C8CC3F0E58CFFA9AD022BBD578442213935E572B8AD96461AC8F4DE7A296AFED6A51B4AC5E06B2, N'Greenbush', N'Martinique', CAST(N'2020-06-24T00:00:00.0000000' AS DateTime2), CAST(N'1956-07-22T00:00:00.0000000' AS DateTime2), N'female', N'Sit sit incididunt proident velit.', N'Sunt esse aliqua ullamco in incididunt consequat commodo. Nisi ad esse elit ipsum commodo fugiat est ad. Incididunt nostrud incididunt nostrud sit excepteur occaecat.
+', N'Lisa', CAST(N'2020-06-21T00:00:00.0000000' AS DateTime2), N'Dolor anim cupidatat occaecat aliquip et Lorem ut elit fugiat. Mollit eu pariatur est sunt. Minim fugiat sit do dolore eu elit ex do id sunt. Qui fugiat nostrud occaecat nisi est dolor qui fugiat laborum cillum. Occaecat consequat ex mollit commodo ad irure cillum nulla velit ex pariatur veniam cupidatat. Officia veniam officia non deserunt mollit.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (72, N'karen', 0xA5271ABC7F02EA69B78586952871976A3E9905D9B2DD72A1A994D852E6C505D4FB89BFB5609D573E2EC8312928279BEE00EF9180C43A810DE9CA19CEDAB347B9, 0x688B9367F312A5B175DE6D14FDCE7D9CB72E5C2A2080ADB0A4CA1F0DDE39E5716CEFC1DBB172B61A38FCC83D13DA9F5957228D535A13FD22FA0EF14A9EE379E682AAB4E8288AA5EE8F67E6A8FD5505D122C5E67EC8090E5DBD833C232EFB52326AD12B673F58484C524598E5AD4DF0321AB7FDB2FDF1AA7F5306C607B1F95DFA, N'Celeryville', N'Grenada', CAST(N'2019-12-09T00:00:00.0000000' AS DateTime2), CAST(N'1995-10-12T00:00:00.0000000' AS DateTime2), N'female', N'Dolor aliquip velit amet aliqua minim labore sit laboris non aliquip cillum.', N'Laborum dolore aliquip voluptate sunt cupidatat fugiat. Aliqua cillum deserunt do sunt ullamco aute Lorem nisi irure velit esse excepteur ex qui. Aliquip cupidatat officia ullamco duis veniam quis elit dolore nisi proident exercitation id cillum ullamco. In exercitation aliqua commodo veniam culpa duis commodo mollit et sint culpa.
+', N'Karen', CAST(N'2020-05-06T00:00:00.0000000' AS DateTime2), N'Dolor magna eu reprehenderit nostrud do et. Amet voluptate ut laboris ut officia eiusmod exercitation elit labore anim. In consequat ut ex adipisicing irure. Sit proident sint laboris est proident aute mollit minim et mollit. Cillum in enim velit occaecat aliquip. Voluptate aliquip et culpa est ad proident elit duis.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (73, N'margo', 0xC4376B588214692AD8495C8F00A4F94A669E40B9392B4D2163B0DBE306F3145C6CC66B8F41D30E999659B3DB7B501BC94731D6A0CE31A1D51A2C9CCB988183F1, 0xE80ED0B6A24A05B1CF2332626BBB895E69C20F7A769DFF8792012465CA0A19372BF639AA03670004B6A2D79D79322EB4B11058EBFA685E7DD76AA83EF667F469784BB9A5F0E060BFA34FA9279CA0716009594A480E26E6BCD4AEE4D13BF8206F5209F486AF7030A9A2CBBEB2B3EC9143F589657DB42F1D8302450EB15DA1D97D, N'Rosewood', N'Svalbard and Jan Mayen Islands', CAST(N'2019-08-10T00:00:00.0000000' AS DateTime2), CAST(N'1959-01-24T00:00:00.0000000' AS DateTime2), N'female', N'Commodo do eiusmod quis labore est non.', N'Dolor ut mollit sunt fugiat magna do eu et aliqua. Dolor consectetur reprehenderit irure non adipisicing ad irure sint id amet reprehenderit esse consectetur ex. Nisi sunt minim amet dolore eiusmod occaecat commodo nostrud tempor dolore velit. Fugiat labore duis nulla do officia voluptate ullamco. Velit ex ullamco cillum amet qui anim et ullamco adipisicing fugiat exercitation aliqua. Consectetur et do labore enim aliqua occaecat.
+', N'Margo', CAST(N'2020-05-12T00:00:00.0000000' AS DateTime2), N'Magna consectetur amet sint aliqua cillum proident commodo. Irure aute ad do dolore sunt aliqua sint aliqua sint. Qui eiusmod veniam qui adipisicing id incididunt non. Ad occaecat proident eiusmod ex dolor aliqua velit laboris qui cillum Lorem enim ex enim. Magna nisi duis minim deserunt.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (74, N'lois', 0x7D06A94D6C36D4FAC60D8FD070397FDD5AAC1B11D48801CF16524C2993D686FAAAACB1A59A2A2CC01EFB784116F5A2FF1BAB49D08AD2E46C9054C5C14AE8F399, 0xFAF2084D7A9FF83AEAA2FDEEEEFDE6D6965D4BBF686C9E2AE69ED6857B87F3424C3B664C482D591E7C595DE6D8CD007A6CE2EB8C2C60D8BEFCC51C82663A29898EC3784BC2C3F4981DD9F1676C1157C65348E5A00B69D3028936AD6D92C4DC59250272104CD194413D55B2D2A372D5FC2F76E597D2B77682E003D528ADE7AF83, N'Orviston', N'Zimbabwe', CAST(N'2019-04-24T00:00:00.0000000' AS DateTime2), CAST(N'1988-06-22T00:00:00.0000000' AS DateTime2), N'female', N'Duis in est laboris anim pariatur incididunt mollit laboris ea velit aliquip cillum.', N'Cillum elit nostrud enim laboris pariatur labore ipsum ut. Quis elit irure sint velit laboris anim Lorem laboris. Labore reprehenderit magna officia aliquip pariatur ea id id commodo. Culpa duis non ex nisi. Deserunt pariatur aliqua consequat reprehenderit sunt ex exercitation.
+', N'Lois', CAST(N'2020-06-17T00:00:00.0000000' AS DateTime2), N'Dolor est cupidatat dolor cupidatat cillum amet veniam eiusmod aliqua adipisicing aliquip proident adipisicing. Non nulla ex nisi magna ut cillum Lorem ad. Fugiat nulla laboris consequat excepteur ut est veniam voluptate ut officia anim reprehenderit proident sunt. Do proident laboris consequat laboris cillum minim reprehenderit velit.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (75, N'ruthie', 0x7DFE47E098FAD1FD7432EEF50B07142661C5F9530CA658AE34972DF0DD4BB72BF96A8CCAC7DA67D9B0112667F823E24D43B3312D260E901BA968C1A68C011945, 0xDC0397CD843FEA6A7936AB3545E5ECF116AD8FA9ADA11FBEF267AC5523030D15D7C9D4E5197E399466A6F4B44B56402007220D078186F1C2F21D553668B03168D7CB63B801A1449FC3E8C37BF5200A307D9E09D7A216C0772598D085B0C7DDC175A603BD9363E28EA26958BC51A9C61ABFB65514DC42858768F0FD947E229323, N'Germanton', N'Antigua and Barbuda', CAST(N'2019-04-30T00:00:00.0000000' AS DateTime2), CAST(N'1956-01-12T00:00:00.0000000' AS DateTime2), N'female', N'Elit Lorem aliquip deserunt cupidatat ex aliquip ullamco.', N'Qui ipsum voluptate exercitation officia nisi velit adipisicing exercitation sint nulla do. Qui fugiat non nisi excepteur et duis elit consectetur ullamco velit fugiat. Sit do esse cupidatat quis eiusmod cupidatat.
+', N'Ruthie', CAST(N'2020-06-21T00:00:00.0000000' AS DateTime2), N'Est quis dolore duis excepteur exercitation reprehenderit ipsum elit aliquip dolor nostrud. Sint incididunt sunt deserunt pariatur pariatur minim velit voluptate consequat amet qui. Sit cillum ullamco culpa deserunt commodo culpa ad anim. Do aliqua aute proident eiusmod esse veniam ipsum nisi anim veniam ut aliquip incididunt culpa.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (76, N'todd', 0xC25E4EA907CC50662B28E752CBD2A54A123615451A4B5459C831013B62B6C2A593C8EDEF06EB1DD635DD3C1AF9B779AB2EAD4C0C6792DF80B2B7896CDCFDA71D, 0xB3762C137C2AD52FBD04B53E8D56199A052019342F68365F3AC42F734D5CFF51BF9ADABFECF4A14014081E1B29DFC9423BCA5A0B3E52D4FB5D1F6162A320DB9CD0E64018E339767B5F3527F907D1D2A08829321F12792C10605D212B78A6E6E7F645676ABCB49C18EEB0F0CDF5D98FC41BA6C362BB037044689A77626DC451A8, N'Cliff', N'British Indian Ocean Territory', CAST(N'2019-04-29T00:00:00.0000000' AS DateTime2), CAST(N'1950-02-07T00:00:00.0000000' AS DateTime2), N'male', N'Esse cillum deserunt fugiat deserunt irure ea esse deserunt quis exercitation velit do nisi reprehenderit.', N'Mollit elit cillum dolore ea laboris consequat excepteur eiusmod eiusmod qui magna mollit occaecat. Sint qui ut veniam non. Est non veniam magna in consectetur ullamco eiusmod in elit aute ea ipsum aliquip. Duis nisi do dolore ad. Consectetur incididunt quis exercitation aliquip officia. Ex anim pariatur veniam fugiat aute consequat quis nisi in quis.
+', N'Todd', CAST(N'2020-05-16T00:00:00.0000000' AS DateTime2), N'Magna ex non ullamco ipsum commodo minim cupidatat sit. Sint dolor enim amet cupidatat. Anim et ea officia ea officia veniam adipisicing tempor. Labore consequat in duis deserunt tempor aliqua. Eu incididunt id deserunt proident ullamco aliqua culpa officia anim deserunt fugiat amet voluptate qui. In id non sint sint aliqua commodo reprehenderit excepteur cillum Lorem minim.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (77, N'porter', 0x859D229061F5C34C4BD08D6EBD934364576EE05A95A9ACFBC0A9C950722415F78CE31E1C090D8DAFA91C69A1008593BCFA111D4246F4883727446A5BDF26577B, 0x122A6A8107B431E9A0A7748278CCE98131C1BC8D3341BD471D0ACD3B75A7C75F664B3DC2DF2C4AFEB42EC65B11D010B52C6E13F67F4EDAB19266ED8A6C25B33187C95D4E04E0FD3D2AC9B954C5DB643B557B9F611ABCDF268A44B8D736BAABB39D63058DC8DF1127BAE8A276ED4C69CBCE68C6B35F7C765042F726525D1283C4, N'Welda', N'Christmas Island', CAST(N'2020-04-05T00:00:00.0000000' AS DateTime2), CAST(N'1967-04-09T00:00:00.0000000' AS DateTime2), N'male', N'Aliquip proident pariatur excepteur incididunt irure et.', N'Qui adipisicing enim mollit magna fugiat. Quis laborum sit adipisicing Lorem veniam magna. Aliqua ex occaecat id duis aute excepteur quis eu eiusmod. Cillum consectetur dolore officia consequat veniam nulla qui occaecat ullamco ipsum sit incididunt aute ullamco.
+', N'Porter', CAST(N'2020-06-23T00:00:00.0000000' AS DateTime2), N'Officia id adipisicing duis culpa aute voluptate Lorem quis aliquip qui. Cupidatat aliquip amet reprehenderit excepteur amet et est dolore est. Veniam pariatur elit non ullamco labore quis do. Ad non cillum nisi non. Non cupidatat nisi fugiat officia tempor officia sunt qui duis.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (78, N'mayo', 0xCE5A0FC9EF47BB950AE530B9E59167BB94DCA56A6D69BC45E7C404F0189A8F9B85A15811DC39F56711C446795ABD30E34ACC839FA36718A965A495A096CD1637, 0x78ECAC15132EB3E55DACC904B7E53B5D817125EB48D2229B15C6032D89796E18683ADFD7718C043607C3C07E34B9A3A19D52CAC21D2D37F53324E3CABBFD060EA70A1FFBBD8A074A3088BCFAA8C426AE62AACED926FC32032888FB62D60B291C5A7F2B33546A15E939718B18FFEBFB2DB6C7FE4074C3EF95FE506B08DA27C9E5, N'Clarence', N'Burkina Faso', CAST(N'2020-03-14T00:00:00.0000000' AS DateTime2), CAST(N'1990-03-23T00:00:00.0000000' AS DateTime2), N'male', N'Duis consectetur proident labore velit minim irure proident incididunt officia duis.', N'Aliquip labore nisi veniam exercitation sit laborum nisi pariatur dolore tempor irure. Ad officia et eu cupidatat qui irure pariatur qui excepteur dolor ut eiusmod. Exercitation qui cillum elit elit officia elit culpa eu consequat cupidatat velit esse.
+', N'Mayo', CAST(N'2020-05-17T00:00:00.0000000' AS DateTime2), N'Duis tempor amet officia irure amet do ipsum est dolore culpa id Lorem exercitation labore. Cupidatat minim duis nulla occaecat excepteur anim laboris id culpa ullamco culpa. Ullamco mollit labore mollit esse labore eiusmod elit enim voluptate laborum irure amet eu in. Pariatur consectetur Lorem velit incididunt excepteur. Magna proident nulla ex laboris veniam tempor proident nisi elit. Ex tempor excepteur eiusmod et occaecat laboris ad ex veniam voluptate. Ipsum mollit voluptate nulla eiusmod nostrud sit anim anim qui est aute pariatur sint.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (79, N'skinner', 0xB2F1714595B5FBEE3918190CA5CE04EA513D169FDCD25F5B864B99C5DAC689553F1669FF729BABE09809468564BA3BAC7D4C76796B8D2E2707594B3187DAB745, 0x32D80D044893055A9FF1767D9AFBE3CA9BA76BDBBB76B118BFD862BE673D98DF5AFFF81BA796980359BB9AA6B4E0F4B46A8F08478A598D87F6B83DC1D6A698A417A46A6BE614C79976AC9B07E11CC02D1F4AD5F0CA59F527B43DDF70019794B2885618E582D2CB71C11ED2B69487E5EBD5498A8AA105E86B9928E119BC4B8BB5, N'Herald', N'Poland', CAST(N'2019-01-28T00:00:00.0000000' AS DateTime2), CAST(N'1952-12-01T00:00:00.0000000' AS DateTime2), N'male', N'Pariatur qui ut commodo laboris officia.', N'Cupidatat dolor irure officia qui consequat ea laborum excepteur esse. Esse qui cupidatat minim laborum velit occaecat officia. Nulla consectetur nisi laborum in eu fugiat ipsum magna. Ipsum sunt consectetur reprehenderit ea consectetur fugiat anim enim nostrud. Ut fugiat cupidatat aliquip ipsum laborum adipisicing sint tempor. Eu deserunt aute Lorem duis exercitation aute aute commodo ut eu elit elit commodo officia.
+', N'Skinner', CAST(N'2020-06-07T00:00:00.0000000' AS DateTime2), N'Sunt est cillum nisi officia cupidatat sit ullamco. Labore aliquip pariatur amet velit labore cillum irure dolor. Anim ut cupidatat qui pariatur veniam eu. Eu est cillum non amet consectetur deserunt eiusmod ea sint nostrud quis ipsum cillum. Irure id et minim do nostrud consectetur quis ex duis nostrud dolor. Veniam enim sint proident officia sint enim eiusmod occaecat adipisicing do ad proident.
+')
+GO
+INSERT [dbo].[Users] ([Id], [UserName], [PasswordHash], [PasswordSalt], [City], [Country], [Created], [DateOfBirth], [Gender], [Interests], [Introduction], [KnownAs], [LastActive], [LookingFor]) VALUES (80, N'davis', 0xBC97DBF9D524BF5639BFFCC143F30ACB9926BCA9F197E7DC4B9E0997D0D78BC66022669577A709DF0D1032BD4483548A6DBE55DA8E2697A5C8F2187A216071E0, 0x860A33A6A8FB49B8143B3BA781B024061AB9B2F8C368CC53C5E2457127052E35F799D2EE51357FDEB8BBEE51F59A7985CEEF6CC2893A5150DC7B0ABFC149A83049B2A655BB2B3B68DE02E0319CE820F1BE9FE9AE420E67A5CDF5D09977B7C868D04580A524A628976A7555A89BD9B4280EA5FAF4390DFF0A97102DC812C997C3, N'Lupton', N'Luxembourg', CAST(N'2020-02-25T00:00:00.0000000' AS DateTime2), CAST(N'1978-03-20T00:00:00.0000000' AS DateTime2), N'male', N'Labore consectetur labore ut nulla voluptate nulla quis labore tempor dolor laborum.', N'Voluptate sunt adipisicing ea nisi ex ullamco veniam dolor. Dolor do et exercitation in. Aute enim pariatur amet commodo. Deserunt consectetur quis culpa aliqua voluptate ipsum exercitation exercitation exercitation ea aliqua sunt.
+', N'Davis', CAST(N'2020-06-11T00:00:00.0000000' AS DateTime2), N'Do do minim est incididunt minim qui aliqua nulla pariatur culpa pariatur culpa non. Aliquip esse quis ullamco sint voluptate. Eiusmod reprehenderit nostrud elit eu. Sit est incididunt elit excepteur eu non. Non tempor labore nisi consequat excepteur magna non velit. Nostrud labore ex nostrud magna adipisicing aute exercitation ad in incididunt pariatur anim. Officia dolor proident nulla laboris quis.
+')
+GO
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+/****** Object:  Index [IX_Photos_AppUserId]    Script Date: 16-11-2022 21:16:00 ******/
+CREATE NONCLUSTERED INDEX [IX_Photos_AppUserId] ON [dbo].[Photos]
+(
+	[AppUserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (0x) FOR [PasswordHash]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (0x) FOR [PasswordSalt]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [City]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [Country]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [Created]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [DateOfBirth]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [Gender]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [Interests]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [Introduction]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [KnownAs]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [LastActive]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT (N'') FOR [LookingFor]
+GO
+ALTER TABLE [dbo].[Photos]  WITH CHECK ADD  CONSTRAINT [FK_Photos_Users_AppUserId] FOREIGN KEY([AppUserId])
+REFERENCES [dbo].[Users] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Photos] CHECK CONSTRAINT [FK_Photos_Users_AppUserId]
+GO
